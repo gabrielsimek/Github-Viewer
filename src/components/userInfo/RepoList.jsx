@@ -1,17 +1,17 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import RepoItem from './RepoItem';
+import Item from './Item';
 
 const RepoList = ({ repos }) => {
-  console.log(repos);
-  //   const repos = [];
-  const repoElements = repos.map(repo =>( 
+  const repoElements = repos.map(repo => ( 
     <li key={repo.id}>
-      <RepoItem {...repo} />
+      <Item {...repo} />
     </li>
   ));
-  console.log(repoElements);
-  return <ul>{repoElements}</ul>;
+  return   <>
+    <h1>Repositories</h1>
+    <ul>{repoElements}</ul>
+  </>;
 };
 
 export default RepoList;

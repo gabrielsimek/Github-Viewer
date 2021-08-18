@@ -1,7 +1,6 @@
 import React from 'react';
 
-const RepoItem = ({ name, html_url, created_at, updated_at }) => {
-  console.log(html_url);
+const Item = ({ name, html_url, created_at, updated_at }) => {
   return (
     <div>
       <h3>{name}</h3> 
@@ -12,4 +11,4 @@ const RepoItem = ({ name, html_url, created_at, updated_at }) => {
   );
 };
 
-export default RepoItem;
+export default Item;
