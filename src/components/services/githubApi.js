@@ -16,7 +16,7 @@ export async function fetchPulls(token, userName, repos){
       const res = await fetch(
         `https://api.github.com/repos/${userName}/${repo.name}/pulls?state=all`,
         {
-          method: 'Get',
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `token ${token}`

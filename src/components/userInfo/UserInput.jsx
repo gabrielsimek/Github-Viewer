@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import { setSelected, setUserName } from '../../state/actions';
 import { useDispatch, useSelector } from '../../state/ReduxProvider';
-import { selectSelected } from '../../state/selectors';
+import { selectRepos, selectSelected } from '../../state/selectors';
 
 const UserInput = () => {
   const dispatch = useDispatch();
   const selected = useSelector(selectSelected);
-  const [userNameLocal, setUserNameLocal] = useState('');
+  const repos = useSelector(selectRepos);
+  const [formUserName, setFormUserName] = useState('');
+  // const [tokenLocal, setTokenLocal] = useState('');
   const onUserChange = ({ target }) => {
-    setUserNameLocal(target.value);
+    setFormUserName(target.value);
   };
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setUserName(userNameLocal));
+    dispatch(setUserName(formUserName));
   };
 
   const onSelectChange = ({ target }) => {
@@ -21,12 +23,12 @@ const UserInput = () => {
   };
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="user-input">
           <input 
             id="user-input"
             type="text"
-            value={userNameLocal}
+            value={formUserName}
             onChange={onUserChange}
           />
         </label>  
@@ -40,7 +42,7 @@ const UserInput = () => {
         value={selected}
       >
         <option value="repos">Repos</option>
-        <option  value="pulls">Pulls</option>
+        { repos.length > 1  && <option  value="pulls">Pulls</option>}
       </select>
     </>
   );
