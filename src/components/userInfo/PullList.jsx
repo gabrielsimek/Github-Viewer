@@ -2,8 +2,13 @@
 import React from 'react';
 import Item from './Item';
 
-const PullList = ({ pulls }) => {
-  const pullElements = pulls.map(pull => ( 
+const PullList = ({ pulls, filter }) => {
+  let filteredPulls;
+  if(filter === 'open') filteredPulls = pulls.filter(pull => pull.state === 'open');
+  else if (filter === 'closed') filteredPulls = pulls.filter(pull => pull.state === 'closed')
+  else filteredPulls = [...pulls]
+
+  const pullElements = filteredPulls.map(pull => ( 
     <li key={pull.id}>
     
       <Item {...pull} />

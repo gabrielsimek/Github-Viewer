@@ -7,3 +7,5 @@ export const selectPulls = (state) => state.pulls;
 export const selectUserName = (state) => state.userName;
 
 export const selectSelected = (state) => state.selected;
+
+export const selectFilter = (state) => state.filter;

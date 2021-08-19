@@ -4,6 +4,7 @@ export const SET_SELECTED = 'SET-SELECTED';
 export const FETCH_USER = 'FETCH-USER';
 export const FETCH_REPOS = 'FETCH-REPOS';
 export const FETCH_PULLS = 'FETCH-PULLS';
+export const SET_FILTER = 'SET_FILTER';
 
 export const setUserName = (userName) => {
   return {
@@ -39,5 +40,11 @@ export const getPulls = (pulls) => {
   return {
     type: FETCH_PULLS,
     payload: pulls
+  };
+};
+export const setFilter = (filter) => {
+  return {
+    type: SET_FILTER,
+    payload: filter
   };
 };

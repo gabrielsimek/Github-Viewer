@@ -4,8 +4,8 @@ import UserInfo from './UserInfo';
 import UserInput from './UserInput';
 import { fetchPulls, fetchRepos, fetchUser } from '../services/githubApi';
 import { useDispatch, useSelector } from '../../state/ReduxProvider';
-import { getPulls, getRepos, getUser } from '../../state/actions';
-import { selectUser, selectRepos, selectUserName, selectSelected, selectPulls } from '../../state/selectors.js';
+import { getPulls, getRepos, getUser, setFilter } from '../../state/actions';
+import { selectUser, selectRepos, selectUserName, selectSelected, selectPulls, selectStatus, selectFilter } from '../../state/selectors.js';
 import RepoList from './RepoList';
 import PullList from './PullList';
 
@@ -15,6 +15,7 @@ const GithubUserPage = () => {
   const selected = useSelector(selectSelected);
   const repos = useSelector(selectRepos);
   const pulls = useSelector(selectPulls);
+  const filter = useSelector(selectFilter)
 
   const dispatch = useDispatch();
  
@@ -48,6 +49,7 @@ const GithubUserPage = () => {
         repos={repos}
       />}
       { selected === 'pulls' && <PullList 
+        filter={filter}
         pulls={pulls}
       />}
     </>

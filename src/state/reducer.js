@@ -1,5 +1,6 @@
 import { FETCH_PULLS, FETCH_REPOS, 
-  FETCH_USER, SET_SELECTED, 
+  FETCH_USER, SET_FILTER, SET_SELECTED, 
+  SET_STATUS, 
   SET_TOKEN, 
   SET_USERNAME } from './actions';
 
@@ -9,7 +10,8 @@ export const initialState = {
   userInfo: {},
   repos: [],
   pulls: [],
-  token: ''
+  token: '',
+  status: 'all'
 };
 
 export const reducer = (state, action) => {
@@ -26,6 +28,8 @@ export const reducer = (state, action) => {
       return { ...state, repos: action.payload };
     case FETCH_PULLS:
       return { ...state, pulls: action.payload };
+    case SET_FILTER:
+      return { ...state, filter: action.payload };
     default: 
       return state;
   }
