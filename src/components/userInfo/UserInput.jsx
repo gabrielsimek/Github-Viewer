@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { setFilter, setSelected, setUserName } from "../../state/actions";
 import { useDispatch, useSelector } from "../../state/ReduxProvider";
-import { selectPulls, selectRepos, selectSelected, selectStatus } from "../../state/selectors";
+import { selectFilter, selectRepos, selectSelected } from "../../state/selectors";
 
 const UserInput = () => {
   const dispatch = useDispatch();
   const selected = useSelector(selectSelected);
   const repos = useSelector(selectRepos);
-  const pulls = useSelector(selectPulls)
+  const filter = useSelector(selectFilter)
+  console.log(filter);
   const [formUserName, setFormUserName] = useState("");
   // const [tokenLocal, setTokenLocal] = useState('');
   const onUserChange = ({ target }) => {
@@ -45,6 +46,7 @@ const UserInput = () => {
         name="select"
         id="select"
         value={selected}
+        
       >
         <option value="repos">Repos</option>
         {repos.length > 1 && <option value="pulls">Pulls</option>}
@@ -60,6 +62,7 @@ const UserInput = () => {
         name="pull-state"
         value="open"
         onChange={onStatusChange}
+        checked={filter === 'open'}
       />
       <label htmlFor="open">open</label>
 
@@ -69,6 +72,8 @@ const UserInput = () => {
         name="pull-state"
         value="all"
         onChange={onStatusChange}
+        checked={filter === 'all'}
+
       />
       <label htmlFor="all">all</label>
 
@@ -78,6 +83,8 @@ const UserInput = () => {
         name="pull-state"
         value="closed"
         onChange={onStatusChange}
+        checked={filter === 'closed'}
+
       />
       <label htmlFor="closed">closed</label>
       </div>}

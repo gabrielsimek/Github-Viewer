@@ -11,7 +11,7 @@ export const initialState = {
   repos: [],
   pulls: [],
   token: '',
-  status: 'all'
+  filter: 'all'
 };
 
 export const reducer = (state, action) => {
